@@ -1,0 +1,36 @@
+
+
+# Cache files
+__pycache__/
+*.py[cod]
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore data files
+*.csv
+*.parquet
+*.sqlite
+*.db
+
+# Ignore virtual environments
+.env
+.venv/
+*.log
+
+# Ignore common shapefile extensions
+*.xml
+*.dbf
+*.prj
+*.shp
+*.shx
+*.sbn
+*.sbx
+
+# Ignore images
+*.png
+*.jpg
+
+*.idea/
+.vscode/
+.DS_Store
