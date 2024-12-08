@@ -1,0 +1,19 @@
+
+WITH length_of_day AS (
+    SELECT strftime('%Y-%m-%d', DATE) AS date, (Sunset-Sunrise) AS length
+    FROM SUN_1
+    WHERE DATE BETWEEN '2020-01-01' AND '2020-01-31'
+    GROUP BY date
+    ),
+    TAXI_1 AS (
+    SELECT strftime('%Y-%m-%d', tpep_pickup_datetime) AS date, COUNT(*) AS taxi_num
+    FROM TAXI
+    WHERE tpep_pickup_datetime BETWEEN '2020-01-01 00:00:00' AND '2020-01-31 23:59:59'
+    GROUP BY date
+    )
+    SELECT length_of_day.DATE, length_of_day.length, TAXI_1.taxi_num
+    FROM TAXI_1
+    LEFT JOIN length_of_day
+    ON length_of_day.date = TAXI_1.date
+    GROUP BY TAXI_1.date;
+    
